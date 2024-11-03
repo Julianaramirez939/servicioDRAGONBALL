@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Capítulos de la Temporada</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #f8f9fa; /* Color de fondo claro */
+            font-family: Arial, sans-serif; /* Fuente legible */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #007bff; /* Color de fondo azul */
+            color: white; /* Texto blanco */
+        }
+
+        nav {
+            margin: 15px 0; /* Espacio entre el encabezado y la navegación */
+        }
+
+        nav a {
+            margin: 0 15px; /* Espaciado entre los enlaces */
+            color: white; /* Texto blanco */
+            text-decoration: none; /* Sin subrayado */
+            padding: 10px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            transition: background-color 0.3s; /* Transición suave */
+        }
+
+        nav a:hover {
+            background-color: #0056b3; /* Color de fondo al pasar el ratón */
+        }
+
+        section {
+            padding: 20px;
+            text-align: center; /* Centra el texto */
+        }
+
+        h2 {
+            color: #007bff; /* Color azul para el encabezado */
+        }
+
+        ul {
+            list-style-type: none; /* Sin viñetas en la lista */
+            padding: 0; /* Sin padding */
+        }
+
+        li {
+            margin: 10px 0; /* Margen entre elementos de lista */
+        }
+
+        .capitulo-link {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff; /* Color de fondo azul */
+            color: white; /* Texto en blanco */
+            border-radius: 5px; /* Bordes redondeados */
+            text-decoration: none; /* Sin subrayado */
+            transition: background-color 0.3s, transform 0.2s; /* Transiciones para efecto de hover */
+        }
+
+        .capitulo-link:hover {
+            background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+            transform: scale(1.05); /* Aumenta el tamaño del enlace al pasar el ratón */
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #343a40; /* Fondo gris oscuro */
+            color: #fff; /* Texto blanco */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 th:text="${temporada.titulo}">Título de la Temporada</h1>
+    <nav>
+        <a href="/series/">Página Principal</a>
+        <a th:href="@{/series/temporadas}">Ver Temporadas</a>
+        <a th:href="@{/series/temporadas/{id}/capitulos/nuevo(id=${temporada.id})}">Agregar Capítulo</a>
+    </nav>
+</header>
+
+<section>
+    <h2>Listado de Capítulos (30)</h2>
+    <ul>
+        <li th:each="capitulo : ${capitulos}">
+            <a th:href="@{/series/temporadas/{temporadaId}/capitulos/{capituloId}(temporadaId=${temporada.id}, capituloId=${capitulo.id})}" class="capitulo-link" th:text="${capitulo.nombre}">Nombre del Capítulo</a>
+        </li>
+    </ul>
+</section>
+
+<footer>
+    <p>Creado por Juliana Ramírez Molina</p>
+    <p>Fecha: 02/10/24</p>
+    <p>Descripción: Proyecto de Spring Boot para mostrar información de la serie Dragon Ball Z.</p>
+</footer>
+</body>
+</html>

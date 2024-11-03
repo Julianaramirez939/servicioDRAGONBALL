@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dragon Ball - Página Principal</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<header>
+    <h1>Bienvenido a Dragon Ball Z</h1>
+</header>
+
+<section class="main-section">
+    <h2 class="serie-name" th:text="${serie.nombre}">Nombre de la Serie</h2>
+    <img th:src="${serie.posterUrl}" alt="Póster de la serie" class="poster">
+    <p><strong>Clasificación:</strong> <span th:text="${serie.clasificacion}">PG-13</span></p>
+    <p><strong>Descripción:</strong> <span th:text="${serie.descripcion}">Descripción de la serie</span></p>
+    <p><strong>Calificación Promedio:</strong> <span th:text="${serie.calificacionPromedio}">8.5</span></p>
+
+    <!-- Nuevos botones de navegación -->
+    <div class="button-container">
+        <a class="button" href="/series/temporadas">Ver Temporadas</a>
+        <a class="button" href="/series/personajes">Personajes</a>
+    </div>
+</section>
+
+<footer>
+    <p>Creado por Juliana Ramírez Molina</p>
+    <p>Fecha: 02/10/24</p>
+    <p>Descripción: Proyecto de Spring Boot para mostrar información de la serie Dragon Ball Z.</p>
+</footer>
+</body>
+</html>

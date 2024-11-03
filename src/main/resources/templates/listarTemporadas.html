@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Temporadas</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <style>
+        /* Estilos adicionales para botones */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Color de fondo azul */
+            color: white; /* Texto en blanco */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados */
+            text-decoration: none; /* Sin subrayado */
+            font-size: 16px; /* Tamaño de fuente */
+            transition: background-color 0.3s, transform 0.2s; /* Transiciones para efecto de hover */
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+            transform: scale(1.05); /* Aumenta el tamaño del botón al pasar el ratón */
+        }
+
+        .btn-regresar {
+            background-color: #6c757d; /* Color gris para el botón de regresar */
+        }
+
+        .btn-regresar:hover {
+            background-color: #5a6268; /* Color más oscuro al pasar el ratón */
+        }
+
+        body {
+            background-color: #f8f9fa; /* Color de fondo claro para el cuerpo */
+            font-family: Arial, sans-serif; /* Fuente legible */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #007bff; /* Color de fondo azul */
+            color: white; /* Texto blanco */
+        }
+
+        section {
+            padding: 20px;
+            text-align: center; /* Centra el texto */
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #343a40; /* Fondo gris oscuro */
+            color: #fff; /* Texto blanco */
+        }
+
+        h2 {
+            color: #007bff; /* Color azul para el encabezado */
+        }
+
+        ul {
+            list-style-type: none; /* Sin viñetas en la lista */
+            padding: 0; /* Sin padding */
+        }
+
+        li {
+            margin: 10px 0; /* Margen entre elementos de lista */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Temporadas</h1>
+</header>
+<section>
+    <h2>Listado de Temporadas</h2>
+    <ul>
+        <li th:each="temporada : ${temporadas}">
+            <span th:text="${temporada.titulo}">Título de la Temporada</span>
+            <a th:href="@{/series/temporadas/{id}/capitulos(id=${temporada.id})}" class="btn">Ver Capítulos</a>
+        </li>
+    </ul>
+    <a href="/series/nueva-temporada" class="btn">Agregar Nueva Temporada</a>
+    <br>
+    <a href="/series/" class="btn btn-regresar">Regresar a la Página Principal</a> <!-- Botón para regresar -->
+</section>
+<footer>
+    <p>Creado por Juliana Ramírez Molina</p>
+    <p>Fecha: 02/10/24</p>
+    <p>Descripción: Proyecto de Spring Boot para mostrar información de la serie Dragon Ball Z.</p>
+</footer>
+</body>
+</html>

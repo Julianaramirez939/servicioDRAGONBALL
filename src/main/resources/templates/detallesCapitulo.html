@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Capítulo</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #007bff;
+            color: white;
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #343a40;
+            color: #fff;
+        }
+        .estrellas {
+            color: gold;
+            font-size: 24px; /* Tamaño de las estrellas */
+        }
+        .imagenes-capitulo img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+        .botones {
+            margin-top: 20px;
+        }
+        .botones a {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .botones a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function actualizarEstrellas() {
+            const calificacion = document.getElementById('calificacion').value;
+            const estrellas = document.getElementsByClassName('estrella');
+            for (let i = 0; i < estrellas.length; i++) {
+                if (i < calificacion) {
+                    estrellas[i].textContent = '⭐'; // Estrella llena
+                } else {
+                    estrellas[i].textContent = '☆'; // Estrella vacía
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<header>
+    <h1>Detalles del Capítulo</h1>
+</header>
+
+<section>
+    <h2 th:text="${capitulo.nombre}">Nombre del Capítulo</h2>
+    <p><strong>Código:</strong> <span th:text="${capitulo.codigo}">Código del Capítulo</span></p>
+    <p th:text="${capitulo.descripcion}">Descripción del Capítulo</p>
+
+    <div>
+        <span class="estrellas">
+            <span class="estrella">☆</span>
+            <span class="estrella">☆</span>
+            <span class="estrella">☆</span>
+            <span class="estrella">☆</span>
+            <span class="estrella">☆</span>
+        </span>
+    </div>
+
+    <h3>Imágenes del Capítulo:</h3>
+    <div class="imagenes-capitulo">
+        <ul>
+            <li th:each="imagen : ${capitulo.imagenes}">
+                <img th:src="${imagen.url}" alt="Imagen del capítulo" />
+            </li>
+        </ul>
+    </div>
+
+    <!-- Formulario para calificar el capítulo -->
+    <form onsubmit="return false;">
+        <label for="calificacion">Calificación (1-5):</label>
+        <input type="number" id="calificacion" name="calificacion" min="1" max="5" required oninput="actualizarEstrellas()"/>
+        <button type="submit">Calificar</button>
+    </form>
+
+    <div class="botones">
+        <a th:href="@{/series/}" class="btn">Volver a la Página Principal</a>
+        <a th:href="@{/series/temporadas}" class="btn">Ver Temporadas</a>
+    </div>
+</section>
+
+<footer>
+    <p>Creado por Juliana Ramírez Molina</p>
+    <p>Fecha: 02/10/24</p>
+    <p>Descripción: Proyecto de Spring Boot para mostrar información de la serie Dragon Ball Z.</p>
+</footer>
+</body>
+</html>

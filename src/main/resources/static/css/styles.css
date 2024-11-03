@@ -1,0 +1,69 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #0077cc;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-section {
+    padding: 20px;
+    background: white;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+}
+
+.serie-name {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.poster {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    margin-top: 20px; /* Espacio arriba de los botones */
+}
+
+.button {
+    display: inline-block;
+    background-color: #0077cc; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    margin: 10px; /* Espaciado entre botones */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave del color de fondo */
+}
+
+.button:hover {
+    background-color: #005fa3; /* Color más oscuro al pasar el mouse */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0077cc;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0; /* Espaciado entre los párrafos del pie de página */
+}
